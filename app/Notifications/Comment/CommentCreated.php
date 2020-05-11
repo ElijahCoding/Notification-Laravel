@@ -45,7 +45,13 @@ class CommentCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'author' => [
+                'name' => $this->comment->author->name
+            ],
+            'comment' => [
+                'id' => $this->comment->id,
+                'body' => $this->comment->body,
+            ]
         ];
     }
 }
