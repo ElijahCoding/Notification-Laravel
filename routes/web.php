@@ -6,8 +6,9 @@ Route::get('/', function () {
 
 Route::get('/notification', function () {
    $user = \App\User::find(1);
-    $comment = \App\Comment::withTrashed()->find(1);
+//   $comment = \App\Comment::withTrashed()->find(1);
 
+   $user->notify(new \App\Notifications\Auth\UserJoined($user));
     $user->notify(new \App\Notifications\Comment\CommentCreated($comment));
 });
 
